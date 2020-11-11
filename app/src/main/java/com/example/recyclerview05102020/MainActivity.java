@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
         mRcvShop.setAdapter(mShopAdapter);
         mRcvShop.setHasFixedSize(true);
+
+        mShopAdapter.setOnItemClick(new OnItemClick() {
+            @Override
+            public void onClick(int position) {
+                Toast.makeText(MainActivity.this, mShopList.get(position).getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }

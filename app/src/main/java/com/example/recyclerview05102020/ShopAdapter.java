@@ -17,6 +17,7 @@ import java.util.List;
 public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopViewHolder>{
 
     List<Shop> mShopList;
+    OnItemClick mOnItemClick;
 
     public ShopAdapter(List<Shop> mShopList) {
         this.mShopList = mShopList;
@@ -73,9 +74,13 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopViewHolder
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(itemView.getContext(), mShopList.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
+                    mOnItemClick.onClick(getAdapterPosition());
                 }
             });
         }
+    }
+
+    public void setOnItemClick(OnItemClick mOnItemClick){
+        this.mOnItemClick = mOnItemClick;
     }
 }
