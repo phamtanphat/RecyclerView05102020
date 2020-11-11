@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         mShopAdapter.setOnItemClick(new OnItemClick() {
             @Override
             public void onClick(int position) {
-                Toast.makeText(MainActivity.this, mShopList.get(position).getName(), Toast.LENGTH_SHORT).show();
+                mShopList.remove(position);
+                mShopAdapter.notifyItemRemoved(position);
             }
         });
 
