@@ -39,7 +39,12 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopViewHolder
         }
         holder.mImgBackground.setImageResource(shop.getImage());
         holder.mTvName.setText(shop.getName());
-        holder.mTvCountShop.setText(shop.getCountShops() + " địa điểm");
+        if (shop.getCountShops() > 1){
+            holder.mTvCountShop.setText(shop.getCountShops() + " địa điểm");
+        }else{
+            holder.mTvCountShop.setText(shop.getAddress());
+        }
+
         holder.mTvSaleOff.setText(shop.getSaleOf());
         holder.mTvPrice.setText("Giá " + shop.getPrice());
         holder.mTvPromotion.setText(shop.getPromotion());
