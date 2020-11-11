@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -59,7 +60,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopViewHolder
         ImageView mImgOnLine,mImgBackground;
         TextView mTvName,mTvCountShop,mTvSaleOff,mTvPrice,mTvPromotion;
 
-        public ShopViewHolder(@NonNull View itemView) {
+        public ShopViewHolder(@NonNull final View itemView) {
             super(itemView);
             mImgBackground = itemView.findViewById(R.id.imageBackground);
             mImgOnLine = itemView.findViewById(R.id.imageOnline);
@@ -68,6 +69,13 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.ShopViewHolder
             mTvSaleOff = itemView.findViewById(R.id.textViewSaleOff);
             mTvPrice = itemView.findViewById(R.id.textViewPrice);
             mTvPromotion = itemView.findViewById(R.id.textViewPromtion);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(itemView.getContext(), mShopList.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
